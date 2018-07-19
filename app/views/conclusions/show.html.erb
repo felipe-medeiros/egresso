@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ano:</strong>
+  <%= @conclusion.ano %>
+</p>
+
+<p>
+  <strong>Semestre:</strong>
+  <%= @conclusion.semestre %>
+</p>
+
+<%= link_to 'Edit', edit_conclusion_path(@conclusion) %> |
+<%= link_to 'Back', conclusions_path %>

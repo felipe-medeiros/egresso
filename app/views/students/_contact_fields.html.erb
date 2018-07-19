@@ -1,0 +1,13 @@
+<div class="nested-fields">
+	<div class="field">
+		<%= f.label :tipo %>
+		<%= f.select :tipo, options_for_select([['e-mail', 'email'],
+												 ['telefone', 'telefone']]
+												  ) %>
+
+		<%= f.label :valor %>
+		<%= f.text_field :valor %>
+
+		<%= link_to_remove_association('Remover', f) %>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<%= form_with(model: student, local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :matricula %>
+    <%= form.text_field :matricula %>
+  </div>
+
+  <div class="field">
+    <%= form.label :perfil %>
+    <%= form.number_field :perfil %>
+  </div>
+
+  <div class="field">
+    <%= form.label :homologado %>
+    <%= form.number_field :homologado %>
+  </div>
+
+  <div class="contacts">
+    
+    <%= form.fields_for :contacts do |contacts_fields| %>
+      <% render partial: "contact_fields", locals: {f: contact_fields} %>
+    <%end%>
+
+    <%= link_to_add_association('[Adicionar Contato]', form, :contacts) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id %>
+    <%= form.text_field :course_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :conclusion_id %>
+    <%= form.text_field :conclusion_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
