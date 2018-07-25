@@ -7,9 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
+  <style type="text/css">
+    table {
+      margin: auto;
+    }
+    nav {
+      margin: 10px 10px 60px 10px;
+    }
+  </style>
 
-  <body>
+  <body style="text-align: center;">
     <%= render partial: "/layouts/menu" %>
     <%= yield %>
   </body>

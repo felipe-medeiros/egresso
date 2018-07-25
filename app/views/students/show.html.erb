@@ -11,23 +11,20 @@
 </p>
 
 <p>
-  <strong>Perfil:</strong>
-  <%= @student.perfil %>
+  <strong>Curso:</strong>
+  <%= @student.course.nome %>
 </p>
 
 <p>
-  <strong>Homologado:</strong>
-  <%= @student.homologado %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @student.course %>
+  <strong>Contatos:</strong><br>
+  <% @student.contacts.each do |contact| %>
+    <%= contact.tipo %>: <%= contact.valor %>
+  <%end%>
 </p>
 
 <p>
   <strong>Conclusion:</strong>
-  <%= @student.conclusion %>
+  <%= @student.conclusion.ano%><%= @student.conclusion.semestre %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

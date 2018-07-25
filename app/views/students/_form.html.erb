@@ -34,7 +34,7 @@
   <div class="contacts">
     
     <%= form.fields_for :contacts do |contacts_fields| %>
-      <% render partial: "contact_fields", locals: {f: contact_fields} %>
+      <% render partial: "registrations/contact_fields", locals: {f: contacts_fields} %>
     <%end%>
 
     <%= link_to_add_association('[Adicionar Contato]', form, :contacts) %>

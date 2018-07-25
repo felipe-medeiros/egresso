@@ -1,7 +1,13 @@
-<div class="jumbotron">
-  <h2 class="display-4">Bem, Vindo!</h2>
-  <p class="lead">Site para egressos do IFPB.</p>
-  <hr class="my-4">
-  <!-- <h1> <%= t "idioma" %> </h1> -->
-  
-</div>
+<% if student_signed_in? %>
+	<%= controller.redirect_to briefs_url %>
+<% elsif coordinator_signed_in? %>
+	<%= render partial: "coordinators/home" %>
+<%else%>
+
+	<div class="jumbotron">
+	  <h2 class="display-4">Bem-Vindo!</h2>
+	  <p class="lead">Site para egressos do IFPB.</p>
+	  <hr class="my-4">
+	  
+	</div>
+<%end%>

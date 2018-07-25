@@ -1,10 +1,10 @@
-<h2>Sign up</h2>
+<h2>Sign up</h2><br>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -12,12 +12,12 @@
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -32,8 +32,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :perfil %>
-    <%= f.number_field :perfil %>
+    <%= f.label "Perfil público" %>
+    <%= f.radio_button(:perfil, "1") %>
+    <%= f.label "Perfil privado" %>
+    <%= f.radio_button(:perfil, "0") %>
   </div>
   
   <div class="field">
@@ -44,11 +46,6 @@
   <div class="field">
     <%= f.label :conclusion %>
     <%= f.collection_select(:conclusion_id, Conclusion.all, :id, :nome)%>
-  </div>
-
-  <div class="field">
-    <%= f.label :homologado %>
-    <%= f.number_field :homologado %>
   </div>
 
   <div class="contacts">

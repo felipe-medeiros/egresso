@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :briefs
   devise_for :coordinators
   devise_for :students
   

@@ -8,6 +8,9 @@ class Student < ApplicationRecord
   belongs_to :conclusion
 
   has_many :contacts
+  has_one :briefs
+
+  accepts_nested_attributes_for :briefs
 
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, allow_destroy: true
 

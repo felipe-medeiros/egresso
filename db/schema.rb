@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_19_173137) do
+ActiveRecord::Schema.define(version: 2018_07_20_085206) do
+
+  create_table "briefs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "texto"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_briefs_on_student_id"
+  end
 
   create_table "conclusions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "ano"
-    t.string "semestre"
+    t.string "ano", default: "2018"
+    t.string "semestre", default: "2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,8 +70,8 @@ ActiveRecord::Schema.define(version: 2018_07_19_173137) do
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
     t.string "matricula"
-    t.integer "perfil"
-    t.integer "homologado"
+    t.integer "perfil", default: 0
+    t.integer "homologado", default: 0
     t.bigint "course_id"
     t.bigint "conclusion_id"
     t.datetime "created_at", null: false
@@ -84,6 +92,7 @@ ActiveRecord::Schema.define(version: 2018_07_19_173137) do
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "briefs", "students"
   add_foreign_key "contacts", "students"
   add_foreign_key "coordinators", "courses"
   add_foreign_key "students", "conclusions"

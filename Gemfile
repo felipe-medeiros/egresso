@@ -12,13 +12,17 @@ gem 'mysql2'
 
 gem 'jquery-rails'
 
+gem 'rails-i18n'
+
 gem 'i18n', '~> 1.0', '>= 1.0.1'
 
 gem 'cocoon'
 
 gem 'devise'
 
-#gem 'deivse-i18n'
+gem 'devise-i18n'
+
+gem 'kaminari'
 
 gem 'bootstrap'
 # Use Puma as the app server

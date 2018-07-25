@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Texto:</strong>
+  <%= @brief.texto %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @brief.student.nome %>
+</p>
+
+<%= link_to 'Edit', edit_brief_path(@brief) %> |
+<%= link_to 'Back', briefs_path %>

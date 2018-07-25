@@ -7,6 +7,11 @@ class CoordinatorsController < ApplicationController
     @coordinators = Coordinator.all
   end
 
+  def homologar
+    
+
+  end
+
   # GET /coordinators/1
   # GET /coordinators/1.json
   def show

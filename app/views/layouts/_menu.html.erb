@@ -5,24 +5,37 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      
+
+      <li class="nav-item">
+        <a class="nav-link" href="<%= briefs_path %>">Depoimentos</a>
+      </li>      
       <li class="nav-item">
         <a class="nav-link" href="<%= courses_path %>">Cursos</a>
       </li>
+      <% if coordinator_signed_in? %>  
+        <li class="nav-item">
+          <a class="nav-link" href="<%= coordinators_path %>">Coordenadores</a>
+        </li>
+      <%end%>
       <li class="nav-item">
-        <a class="nav-link" href="<%= coordinators_path %>">Coordenadores</a>
+        <a class="nav-link disabled" href="<%= students_path %>">Banco de Talentos</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="<%= students_path %>">Estudantes</a>
-      </li>
-      <li class="nav-item">
+      
       <% if student_signed_in? %>
-          <%= current_student.nome %> - <%= link_to "Sair", destroy_student_session_path, method: :delete %>
+      <li class="nav-item">
+          <%= current_student.nome %> - <%= link_to "Sair", destroy_student_session_path, method: :delete %> - <%= link_to "Atualizar Perfil", edit_registration_path(current_student)%>
+      </li>
       <% elsif coordinator_signed_in?  %>
+      <li class="nav-item">
           <%= current_coordinator.nome%> - <%= link_to "Sair", destroy_coordinator_session_path, method: :delete %>
+      </li>
       <% else %>
-          <%= link_to "Entrar como estudante", new_student_session_path %>
-          <%= link_to "Entrar como coordenador", new_coordinator_session_path %>
+      <li class="nav-item">
+          <a class="nav-link disabled" href="<%= new_student_session_path %>">Estudante</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link disabled" href="<%= new_coordinator_session_path %>">Coordenador</a>
+      </li>
       <% end %>
         
       </li>
