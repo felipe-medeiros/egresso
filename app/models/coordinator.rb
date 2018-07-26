@@ -5,6 +5,6 @@ class Coordinator < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :course
 
-  validates :nome, presence: true
-  validates :matricula, presence: true
+  validates :nome, presence: true, length: { in: 3 .. 50 }
+  validates :matricula, presence: true, uniqueness: true
 end

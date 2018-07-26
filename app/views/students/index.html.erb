@@ -15,17 +15,19 @@
 
   <tbody>
     <% @students.each do |student| %>
-      <% if (student.perfil).to_i == 1 && (student.homologado).to_i == 1 %>
+      <% if (student.homologado).to_i == 1 %>
         <tr>
           <td><%= student.nome %></td>
           <td><%= student.email %></td>        
           <td><%= student.course.nome %></td>
           <td><%= student.conclusion.nome %></td>
-           <td><%= link_to 'Detalhes', student %></td>
+          <% if (student.perfil).to_i == 1  %>
+            <td><%= link_to 'Detalhes', student %></td>
+          <%end%>     
           <!-- <td><%= link_to 'Edit', edit_student_path(student) %></td>
           <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         </tr>
-      <%end%>
+      <% end %>  
     <% end %>
   </tbody>
 </table>

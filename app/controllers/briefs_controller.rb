@@ -5,7 +5,7 @@ class BriefsController < ApplicationController
   # GET /briefs.json
   def index
     @briefs = Brief.all.page(
-      params[:page]).per(5)
+      params[:page]).per(6)
   end
 
   # GET /briefs/1
@@ -27,6 +27,7 @@ class BriefsController < ApplicationController
   def create
     @brief = Brief.new(brief_params)
     @brief.student_id = current_student.id
+    @brief.homologado = 0
     respond_to do |format|
       if @brief.save
         format.html { redirect_to @brief, notice: 'Brief was successfully created.' }
@@ -41,15 +42,9 @@ class BriefsController < ApplicationController
   # PATCH/PUT /briefs/1
   # PATCH/PUT /briefs/1.json
   def update
-    respond_to do |format|
-      if @brief.update(brief_params)
-        format.html { redirect_to @brief, notice: 'Brief was successfully updated.' }
-        format.json { render :show, status: :ok, location: @brief }
-      else
-        format.html { render :edit }
-        format.json { render json: @brief.errors, status: :unprocessable_entity }
-      end
-    end
+    @brief.homologado = 1
+    @brief.save
+    redirect_to root_path
   end
 
   # DELETE /briefs/1

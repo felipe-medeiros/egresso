@@ -6,20 +6,22 @@
   <thead>
     <tr>
       <th>Texto</th>
-      <th>Student</th>
+      <th>Estudante</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @briefs.each do |brief| %>
-      <tr>
-        <td><%= brief.texto %></td>
-        <td><%= brief.student.nome %></td>
-        <td><%= link_to 'Show', brief %></td>
-        <!-- <td><%= link_to 'Edit', edit_brief_path(brief) %></td>
-        <td><%= link_to 'Destroy', brief, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      </tr>
+      <% if brief.homologado == 1 %>
+        <tr>
+          <td><%= brief.texto %></td>
+          <td><%= brief.student.nome %></td>
+          <td><%= link_to 'Show', brief %></td>
+          <!-- <td><%= link_to 'Edit', edit_brief_path(brief) %></td>
+          <td><%= link_to 'Destroy', brief, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
